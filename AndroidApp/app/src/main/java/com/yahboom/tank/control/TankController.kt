@@ -27,6 +27,7 @@ class TankController {
                 connection.inputStream.use { it.readBytes() }
                 connection.disconnect()
             } catch (_: Exception) {
+                // TODO: bubble errors to UI toast/telemetry.
             }
         }.start()
     }

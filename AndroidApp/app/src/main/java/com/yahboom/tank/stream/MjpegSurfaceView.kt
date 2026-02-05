@@ -62,6 +62,7 @@ class MjpegSurfaceView @JvmOverloads constructor(
                 }
             }
         } catch (_: Exception) {
+            // TODO: add error reporting/telemetry
         } finally {
             connection?.disconnect()
             running.set(false)
@@ -144,6 +145,10 @@ class MjpegSurfaceView @JvmOverloads constructor(
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) = Unit
+
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) = Unit
-    override fun surfaceDestroyed(holder: SurfaceHolder) { stopStream() }
+
+    override fun surfaceDestroyed(holder: SurfaceHolder) {
+        stopStream()
+    }
 }
